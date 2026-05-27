@@ -7,38 +7,30 @@ import Timer from "../pages/timer/timer";
 import Todo from "../pages/todo/todo";
 import AI from "../pages/ai/ai";
 
-function Router() {
-  return (
-    <BrowserRouter>
+function Router(){
 
-      <Navigation />
+return(
 
-      <Routes>
+<BrowserRouter>
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
+<Navigation/>
 
-        <Route
-          path="/timer"
-          element={<Timer />}
-        />
+<Routes>
 
-        <Route
-          path="/todo"
-          element={<Todo />}
-        />
+<Route path="/" element={<Home/>}/>
 
-        <Route
-          path="/ai"
-          element={<AI />}
-        />
+<Route path="/timer" element={<Timer/>}/>
 
-      </Routes>
+<Route path="/todo" element={<Todo/>}/>
 
-    </BrowserRouter>
-  );
+<Route path="/ai" element={<AI/>}/>
+
+</Routes>
+
+</BrowserRouter>
+
+)
+
 }
 
 export default Router;
