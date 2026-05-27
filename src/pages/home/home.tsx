@@ -1,104 +1,92 @@
 import { Link } from "react-router-dom";
 
-function Home(){
+function Home() {
 
-return(
+  return (
 
-<div style={styles.page}>
+    <div
+      style={{
+        minHeight:"100vh",
 
-<div style={styles.card}>
+        background:"#efeee5",
 
-<h1 style={styles.title}>
-Procrastinate No More!
-</h1>
+        display:"flex",
 
-<p style={styles.subtitle}>
-Study smarter.
-Focus longer.
-Organise better.
-</p>
+        justifyContent:"center",
 
-<div style={styles.buttons}>
+        alignItems:"center"
+      }}
+    >
 
-<Link to="/timer">
+      <div
+        style={{
+          width:"900px",
 
-<button style={styles.button}>
-Focus Timer
-</button>
+          background:"#f9f9f7",
 
-</Link>
+          padding:"60px",
 
-<Link to="/todo">
+          borderRadius:"30px",
 
-<button style={styles.button}>
-Task Manager
-</button>
+          border:"1px solid #d1e3ee",
 
-</Link>
+          textAlign:"center"
+        }}
+      >
 
-<Link to="/ai">
+        <h1
+          style={{
+            color:"#355872"
+          }}
+        >
+          Procrastinate No More!
+        </h1>
 
-<button style={styles.button}>
-AI Mentor
-</button>
+        <p
+          style={{
+            color:"#4a6a8a"
+          }}
+        >
+          Productivity Companion
+        </p>
 
-</Link>
+        <div
+          style={{
+            display:"flex",
 
-</div>
+            gap:"20px",
 
-</div>
+            justifyContent:"center",
 
-</div>
+            marginTop:"40px"
+          }}
+        >
 
-)
+          <Link to="/timer">
+            <button>
+              Timer
+            </button>
+          </Link>
 
-}
+          <Link to="/todo">
+            <button>
+              To-Do
+            </button>
+          </Link>
 
-const styles:any={
+          <Link to="/ai">
+            <button>
+              AI
+            </button>
+          </Link>
 
-page:{
-height:"85vh",
-display:"flex",
-justifyContent:"center",
-alignItems:"center",
-background:"#efeee5"
-},
+        </div>
 
-card:{
-width:"900px",
-padding:"70px",
-background:"#f9f9f7",
-borderRadius:"30px",
-border:"1px solid #d1e3ee",
-textAlign:"center"
-},
+      </div>
 
-title:{
-fontSize:"60px",
-color:"#355872",
-marginBottom:"20px"
-},
+    </div>
 
-subtitle:{
-fontSize:"22px",
-color:"#6b7280",
-marginBottom:"40px"
-},
-
-buttons:{
-display:"flex",
-justifyContent:"center",
-gap:"20px"
-},
-
-button:{
-padding:"18px 28px",
-border:"none",
-borderRadius:"14px",
-background:"#9cd5ff",
-fontWeight:"700",
-cursor:"pointer"
-}
+  );
 
 }
 

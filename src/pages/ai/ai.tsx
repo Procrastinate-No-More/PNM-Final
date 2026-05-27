@@ -1,44 +1,139 @@
-function AI(){
+import { useState } from "react";
 
-return(
+function AI() {
 
-<div style={styles.page}>
+  const [message,setMessage] = useState("");
 
-<div style={styles.card}>
+  const [chat,setChat] = useState<string[]>([]);
 
-<h1>
-PNM.ai
-</h1>
+  const send = async () => {
 
-<p>
-Chatbot integration coming next
-</p>
+    if(!message.trim()) return;
 
-</div>
+    setChat(prev=>[
+      ...prev,
+      "You: " + message
+    ]);
 
-</div>
+    try{
 
-)
+      const response = await fetch(
+        "https://gpt-pnm-temp.onrender.com/chat",
+        {
+          method:"POST",
 
-}
+          headers:{
+            "Content-Type":"application/json"
+          },
 
-const styles:any={
+          body:JSON.stringify({
+            message
+          })
+        }
+      );
 
-page:{
-height:"85vh",
-display:"flex",
-justifyContent:"center",
-alignItems:"center",
-background:"#efeee5"
-},
+      const data = await response.json();
 
-card:{
-width:"900px",
-padding:"50px",
-background:"#f9f9f7",
-borderRadius:"25px",
-textAlign:"center"
-}
+      setChat(prev=>[
+        ...prev,
+        "AI: " + data.text
+      ]);
+
+    }
+
+    catch{
+
+      setChat(prev=>[
+        ...prev,
+        "AI offline"
+      ]);
+
+    }
+
+    setMessage("");
+
+  };
+
+  return(
+
+    <div
+      style={{
+        background:"#efeee5",
+
+        minHeight:"100vh",
+
+        display:"flex",
+
+        justifyContent:"center",
+
+        alignItems:"center"
+      }}
+    >
+
+      <div
+        style={{
+          width:"900px",
+
+          background:"#f9f9f7",
+
+          padding:"40px",
+
+          borderRadius:"25px"
+        }}
+      >
+
+        <h1
+          style={{
+            color:"#355872"
+          }}
+        >
+          AI Mentor
+        </h1>
+
+        <div
+          style={{
+            height:"400px",
+
+            overflow:"auto"
+          }}
+        >
+
+          {
+            chat.map(
+              (msg,i)=>
+
+              <p key={i}>
+                {msg}
+              </p>
+            )
+          }
+
+        </div>
+
+        <input
+
+          value={message}
+
+          onChange={(e)=>
+            setMessage(e.target.value)
+          }
+
+          placeholder="Ask AI"
+
+          style={{
+            width:"80%"
+          }}
+        />
+
+        <button onClick={send}>
+          Send
+        </button>
+
+      </div>
+
+    </div>
+
+  );
 
 }
 
