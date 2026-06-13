@@ -66,30 +66,41 @@ function AI() {
   };
 
   return (
-    <div style={styles.body}>
-      <div style={styles.chatContainer}>
-        <h1 style={styles.title}>PNM.ai</h1>
+    <div style={styles.page}>
+      <div style={styles.chatCard}>
+        <div style={styles.header}>
+          <h2 style={styles.heading}>PNM.ai</h2>
+          <p style={styles.subheading}>
+            Your productivity assistant
+          </p>
+        </div>
 
-        <div style={styles.chatbox}>
+        <div style={styles.chatArea}>
           {chat.map((msg, index) => (
             <div
               key={index}
-              style={msg.sender === "user" ? styles.user : styles.bot}
+              style={
+                msg.sender === "user"
+                  ? styles.userMessage
+                  : styles.botMessage
+              }
             >
               {msg.text}
             </div>
           ))}
         </div>
 
-        <div style={styles.inputArea}>
+        <div style={styles.inputContainer}>
           <input
             style={styles.input}
-            placeholder="Ask anything..."
+            placeholder="Ask a question..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) =>
-              e.key === "Enter" && sendMessage()
-            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                sendMessage();
+              }
+            }}
           />
 
           <button
@@ -105,69 +116,81 @@ function AI() {
 }
 
 const styles: Record<string, CSSProperties> = {
-  body: {
-    background: "#f7f8f0",
-    height: "calc(100vh - 90px)",
+  page: {
+    minHeight: "calc(100vh - 70px)",
+    background: "#efeee5",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: "25px"
   },
 
-  chatContainer: {
-    width: "90%",
-    maxWidth: "700px",
-    height: "750px",
-    background: "rgba(156,213,255,0.2)",
-    border: "1px solid #7aaace",
-    borderRadius: "24px",
+  chatCard: {
+    width: "100%",
+    maxWidth: "900px",
+    height: "650px",
+    background: "#f9f9f7",
+    borderRadius: "25px",
+    border: "1px solid #d1e3ee",
     display: "flex",
     flexDirection: "column",
     overflow: "hidden",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
+    boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
   },
 
-  title: {
-    padding: "24px",
+  header: {
+    padding: "25px",
+    borderBottom: "1px solid #d1e3ee",
+    background: "#ffffff"
+  },
+
+  heading: {
     margin: 0,
-    background: "white",
     color: "#355872",
-    textAlign: "center",
-    fontSize: "2rem",
-    fontWeight: "700"
+    fontSize: "32px",
+    fontWeight: 800
   },
 
-  chatbox: {
+  subheading: {
+    margin: "6px 0 0",
+    color: "#6b8aa5",
+    fontSize: "14px"
+  },
+
+  chatArea: {
     flex: 1,
-    padding: "20px",
     overflowY: "auto",
+    padding: "20px",
     display: "flex",
     flexDirection: "column",
-    gap: "15px"
+    gap: "12px",
+    background: "#f7fafc"
   },
 
-  user: {
+  userMessage: {
     alignSelf: "flex-end",
-    background: "#7aaace",
+    background: "#355872",
     color: "white",
-    padding: "14px 18px",
-    borderRadius: "18px",
-    maxWidth: "80%"
+    padding: "12px 16px",
+    borderRadius: "16px",
+    maxWidth: "70%"
   },
 
-  bot: {
+  botMessage: {
     alignSelf: "flex-start",
     background: "white",
     color: "#355872",
-    padding: "14px 18px",
-    borderRadius: "18px",
-    maxWidth: "80%",
-    border: "1px solid #9cd5ff"
+    padding: "12px 16px",
+    borderRadius: "16px",
+    border: "1px solid #d1e3ee",
+    maxWidth: "70%"
   },
 
-  inputArea: {
+  inputContainer: {
     display: "flex",
-    gap: "12px",
+    gap: "10px",
     padding: "20px",
+    borderTop: "1px solid #d1e3ee",
     background: "white"
   },
 
@@ -175,19 +198,19 @@ const styles: Record<string, CSSProperties> = {
     flex: 1,
     padding: "14px",
     borderRadius: "12px",
-    border: "1px solid #7aaace",
-    color: "#355872",
-    fontSize: "1rem"
+    border: "1px solid #d1e3ee",
+    outline: "none",
+    fontSize: "16px"
   },
 
   button: {
     background: "#355872",
     color: "white",
     border: "none",
-    padding: "14px 24px",
     borderRadius: "12px",
-    fontWeight: "700",
-    cursor: "pointer"
+    padding: "14px 24px",
+    cursor: "pointer",
+    fontWeight: 700
   }
 };
 

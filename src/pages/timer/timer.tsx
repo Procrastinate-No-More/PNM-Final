@@ -155,7 +155,7 @@ const styles: any = {
 
   card: {
     width: "100%",
-    maxWidth: "1100px",
+    maxWidth: "700px",
     background: "#f9f9f7",
     padding: "50px",
     borderRadius: "30px",
@@ -166,13 +166,13 @@ const styles: any = {
 
   title: {
     color: "#355872",
-    fontSize: "64px",
+    fontSize: "42px",
     fontWeight: 800,
     marginBottom: "25px"
   },
 
   timer: {
-    fontSize: "120px",
+    fontSize: "72px",
     fontWeight: 800,
     color: "#355872",
     margin: "35px 0"
