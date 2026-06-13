@@ -46,7 +46,6 @@ function Timer() {
 
   const reset = () => {
     setSeconds(0);
-
     setInputHours("");
     setInputMinutes("");
     setInputSeconds("");
@@ -58,9 +57,7 @@ function Timer() {
   };
 
   const hrs = Math.floor(seconds / 3600);
-
   const mins = Math.floor((seconds % 3600) / 60);
-
   const secs = seconds % 60;
 
   const display = `${hrs
@@ -76,17 +73,9 @@ function Timer() {
       <div style={styles.card}>
         <h1 style={styles.title}>Timer</h1>
 
-        <div
-          style={{
-            ...styles.buttonRow,
-            marginBottom: "30px"
-          }}
-        >
+        <div style={{ ...styles.buttonRow, marginBottom: "30px" }}>
           <button
-            style={{
-              ...styles.button,
-              background: "#9cd5ff"
-            }}
+            style={styles.secondaryButton}
             onClick={() => {
               reset();
               setInputMinutes("25");
@@ -96,10 +85,7 @@ function Timer() {
           </button>
 
           <button
-            style={{
-              ...styles.button,
-              background: "#9cd5ff"
-            }}
+            style={styles.secondaryButton}
             onClick={() => {
               reset();
               setInputMinutes("5");
@@ -139,33 +125,15 @@ function Timer() {
         <h1 style={styles.timer}>{display}</h1>
 
         <div style={styles.buttonRow}>
-          <button
-            style={{
-              ...styles.button,
-              background: "#9cd5ff"
-            }}
-            onClick={start}
-          >
+          <button style={styles.button} onClick={start}>
             Start
           </button>
 
-          <button
-            style={{
-              ...styles.button,
-              background: "#9cd5ff"
-            }}
-            onClick={pause}
-          >
+          <button style={styles.button} onClick={pause}>
             Pause
           </button>
 
-          <button
-            style={{
-              ...styles.button,
-              background: "#9cd5ff"
-            }}
-            onClick={reset}
-          >
+          <button style={styles.button} onClick={reset}>
             Reset
           </button>
         </div>
@@ -176,81 +144,90 @@ function Timer() {
 
 const styles: any = {
   page: {
-    height: "calc(100vh - 90px)",
+    minHeight: "calc(100vh - 70px)",
     background: "#efeee5",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    fontFamily: "Inter, sans-serif",
-    padding: "20px"
+    padding: "30px",
+    fontFamily: "Inter, sans-serif"
   },
 
   card: {
-    width: "1100px",
-    maxWidth: "95%",
+    width: "100%",
+    maxWidth: "1100px",
     background: "#f9f9f7",
-    padding: "60px",
-    borderRadius: "28px",
+    padding: "50px",
+    borderRadius: "30px",
     border: "1px solid #d1e3ee",
     textAlign: "center",
-    boxShadow: "0 15px 35px rgba(0,0,0,0.05)"
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
   },
 
   title: {
     color: "#355872",
-    fontSize: "3rem",
-    fontWeight: "800",
-    marginBottom: "35px"
+    fontSize: "64px",
+    fontWeight: 800,
+    marginBottom: "25px"
   },
 
   timer: {
-    fontSize: "7rem",
+    fontSize: "120px",
+    fontWeight: 800,
     color: "#355872",
-    margin: "40px 0",
-    fontWeight: "800",
-    letterSpacing: "4px"
-  },
-
-  buttonRow: {
-    display: "flex",
-    gap: "20px",
-    justifyContent: "center",
-    flexWrap: "wrap"
-  },
-
-  button: {
-    border: "none",
-    borderRadius: "14px",
-    padding: "16px 30px",
-    fontSize: "1rem",
-    fontWeight: "700",
-    cursor: "pointer",
-    color: "#355872"
+    margin: "35px 0"
   },
 
   inputRow: {
     display: "flex",
-    gap: "15px",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: "25px"
+    gap: "15px"
   },
 
   input: {
-    width: "100px",
-    padding: "16px",
-    borderRadius: "12px",
+    width: "110px",
+    padding: "18px",
+    fontSize: "24px",
+    borderRadius: "14px",
     border: "1px solid #d1e3ee",
     textAlign: "center",
-    fontSize: "1.2rem",
     background: "#efeee5",
     color: "#355872"
   },
 
   separator: {
-    fontSize: "2rem",
-    fontWeight: "700",
+    fontSize: "32px",
+    fontWeight: "bold",
     color: "#355872"
+  },
+
+  buttonRow: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px"
+  },
+
+  button: {
+    background: "#355872",
+    color: "white",
+    border: "none",
+    borderRadius: "14px",
+    padding: "16px 36px",
+    fontSize: "20px",
+    fontWeight: "bold",
+    cursor: "pointer"
+  },
+
+  secondaryButton: {
+    background: "#9cd5ff",
+    color: "#355872",
+    border: "none",
+    borderRadius: "14px",
+    padding: "14px 30px",
+    fontSize: "18px",
+    fontWeight: "bold",
+    cursor: "pointer"
   }
 };
 
