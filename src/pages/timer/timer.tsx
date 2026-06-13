@@ -74,222 +74,184 @@ function Timer() {
   return (
     <div style={styles.page}>
       <div style={styles.card}>
+        <h1 style={styles.title}>Timer</h1>
 
-        <h1 style={styles.title}>
-          Timer
-        </h1>
-
-        <div style={{
-          ...styles.buttonRow,
-          marginBottom: "25px"
-        }}>
-
+        <div
+          style={{
+            ...styles.buttonRow,
+            marginBottom: "30px"
+          }}
+        >
           <button
             style={{
               ...styles.button,
-              background:"#9cd5ff"
+              background: "#9cd5ff"
             }}
-
-            onClick={()=>{
+            onClick={() => {
               reset();
               setInputMinutes("25");
             }}
           >
-
             Pomodoro
-
           </button>
 
           <button
             style={{
               ...styles.button,
-              background:"#9cd5ff"
+              background: "#9cd5ff"
             }}
-
-            onClick={()=>{
+            onClick={() => {
               reset();
               setInputMinutes("5");
             }}
           >
-
             Break
-
           </button>
-
         </div>
 
         <div style={styles.inputRow}>
-
           <input
             style={styles.input}
             placeholder="hh"
             value={inputHours}
-            onChange={(e)=>
-              setInputHours(
-                e.target.value
-              )
-            }
+            onChange={(e) => setInputHours(e.target.value)}
           />
 
-          <span style={styles.separator}>
-            :
-          </span>
+          <span style={styles.separator}>:</span>
 
           <input
             style={styles.input}
             placeholder="mm"
             value={inputMinutes}
-            onChange={(e)=>
-              setInputMinutes(
-                e.target.value
-              )
-            }
+            onChange={(e) => setInputMinutes(e.target.value)}
           />
 
-          <span style={styles.separator}>
-            :
-          </span>
+          <span style={styles.separator}>:</span>
 
           <input
             style={styles.input}
             placeholder="ss"
             value={inputSeconds}
-            onChange={(e)=>
-              setInputSeconds(
-                e.target.value
-              )
-            }
+            onChange={(e) => setInputSeconds(e.target.value)}
           />
-
         </div>
 
-        <h1 style={styles.timer}>
-          {display}
-        </h1>
+        <h1 style={styles.timer}>{display}</h1>
 
         <div style={styles.buttonRow}>
-
           <button
             style={{
               ...styles.button,
-              background:"#9cd5ff"
+              background: "#9cd5ff"
             }}
-
             onClick={start}
           >
-
             Start
-
           </button>
 
           <button
             style={{
               ...styles.button,
-              background:"#9cd5ff"
+              background: "#9cd5ff"
             }}
-
             onClick={pause}
           >
-
             Pause
-
           </button>
 
           <button
             style={{
               ...styles.button,
-              background:"#9cd5ff"
+              background: "#9cd5ff"
             }}
-
             onClick={reset}
           >
-
             Reset
-
           </button>
-
         </div>
-
       </div>
     </div>
   );
 }
 
-const styles:any={
+const styles: any = {
+  page: {
+    height: "calc(100vh - 90px)",
+    background: "#efeee5",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "Inter, sans-serif",
+    padding: "20px"
+  },
 
-page:{
-height:"100vh",
-background:"#efeee5",
-display:"flex",
-justifyContent:"center",
-alignItems:"center",
-fontFamily:"Inter"
-},
+  card: {
+    width: "1100px",
+    maxWidth: "95%",
+    background: "#f9f9f7",
+    padding: "60px",
+    borderRadius: "28px",
+    border: "1px solid #d1e3ee",
+    textAlign: "center",
+    boxShadow: "0 15px 35px rgba(0,0,0,0.05)"
+  },
 
-card:{
-width:"900px",
-background:"#f9f9f7",
-padding:"60px 40px",
-borderRadius:"28px",
-border:"1px solid #d1e3ee",
-textAlign:"center",
-boxShadow:"0 15px 35px rgba(0,0,0,0.05)"
-},
+  title: {
+    color: "#355872",
+    fontSize: "3rem",
+    fontWeight: "800",
+    marginBottom: "35px"
+  },
 
-title:{
-color:"#4a6a8a",
-fontSize:"32px",
-marginBottom:"30px"
-},
+  timer: {
+    fontSize: "7rem",
+    color: "#355872",
+    margin: "40px 0",
+    fontWeight: "800",
+    letterSpacing: "4px"
+  },
 
-timer:{
-fontSize:"90px",
-color:"#4a6a8a",
-margin:"30px 0",
-fontWeight:"bold"
-},
+  buttonRow: {
+    display: "flex",
+    gap: "20px",
+    justifyContent: "center",
+    flexWrap: "wrap"
+  },
 
-buttonRow:{
-display:"flex",
-gap:"15px",
-justifyContent:"center"
-},
+  button: {
+    border: "none",
+    borderRadius: "14px",
+    padding: "16px 30px",
+    fontSize: "1rem",
+    fontWeight: "700",
+    cursor: "pointer",
+    color: "#355872"
+  },
 
-button:{
-border:"none",
-borderRadius:"12px",
-padding:"14px 28px",
-fontSize:"16px",
-fontWeight:"bold",
-cursor:"pointer",
-color:"#111"
-},
+  inputRow: {
+    display: "flex",
+    gap: "15px",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: "25px"
+  },
 
-inputRow:{
-display:"flex",
-gap:"10px",
-justifyContent:"center",
-alignItems:"center",
-marginBottom:"20px"
-},
+  input: {
+    width: "100px",
+    padding: "16px",
+    borderRadius: "12px",
+    border: "1px solid #d1e3ee",
+    textAlign: "center",
+    fontSize: "1.2rem",
+    background: "#efeee5",
+    color: "#355872"
+  },
 
-input:{
-width:"80px",
-padding:"14px",
-borderRadius:"12px",
-border:"1px solid #d1e3ee",
-textAlign:"center",
-fontSize:"18px",
-background:"#efeee5",
-color:"#355872"
-},
-
-separator:{
-fontSize:"20px",
-fontWeight:"bold",
-color:"#355872"
-}
-
+  separator: {
+    fontSize: "2rem",
+    fontWeight: "700",
+    color: "#355872"
+  }
 };
 
 export default Timer;

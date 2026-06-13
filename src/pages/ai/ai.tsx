@@ -7,18 +7,16 @@ type ChatMessage = {
 };
 
 function AI() {
-
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState("");
 
   const [chat, setChat] = useState<ChatMessage[]>([
     {
       sender: "bot",
-      text: "Welcome, Aisha. What academic objectives shall we address today?"
+      text: "Hello! How can I help you today?"
     }
   ]);
 
   const sendMessage = async () => {
-
     if (!message.trim()) return;
 
     const userText = message;
@@ -34,7 +32,6 @@ function AI() {
     setMessage("");
 
     try {
-
       const response = await fetch(
         "https://gpt-pnm-temp.onrender.com/chat",
         {
@@ -57,63 +54,41 @@ function AI() {
           text: data.text || "No response"
         }
       ]);
-
     } catch {
-
       setChat((prev) => [
         ...prev,
         {
           sender: "bot",
-          text: "Cannot reach server"
+          text: "Cannot reach server."
         }
       ]);
-
     }
-
   };
 
   return (
-
     <div style={styles.body}>
-
       <div style={styles.chatContainer}>
-
-        <h1 style={styles.title}>
-          Aisha.ai
-        </h1>
+        <h1 style={styles.title}>PNM.ai</h1>
 
         <div style={styles.chatbox}>
-
           {chat.map((msg, index) => (
-
             <div
               key={index}
-              style={
-                msg.sender === "user"
-                  ? styles.user
-                  : styles.bot
-              }
+              style={msg.sender === "user" ? styles.user : styles.bot}
             >
-
               {msg.text}
-
             </div>
-
           ))}
-
         </div>
 
         <div style={styles.inputArea}>
-
           <input
             style={styles.input}
+            placeholder="Ask anything..."
             value={message}
-            onChange={(e) =>
-              setMessage(e.target.value)
-            }
+            onChange={(e) => setMessage(e.target.value)}
             onKeyDown={(e) =>
-              e.key === "Enter" &&
-              sendMessage()
+              e.key === "Enter" && sendMessage()
             }
           />
 
@@ -121,48 +96,44 @@ function AI() {
             style={styles.button}
             onClick={sendMessage}
           >
-
             Send
-
           </button>
-
         </div>
-
       </div>
-
     </div>
-
   );
-
 }
 
 const styles: Record<string, CSSProperties> = {
-
   body: {
     background: "#f7f8f0",
-    height: "100vh",
+    height: "calc(100vh - 90px)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"
   },
 
   chatContainer: {
-    width: "95%",
-    maxWidth: "450px",
-    height: "85vh",
+    width: "90%",
+    maxWidth: "700px",
+    height: "750px",
     background: "rgba(156,213,255,0.2)",
     border: "1px solid #7aaace",
     borderRadius: "24px",
     display: "flex",
     flexDirection: "column",
-    overflow: "hidden"
+    overflow: "hidden",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
   },
 
   title: {
-    padding: "20px",
-    margin: "0",
+    padding: "24px",
+    margin: 0,
     background: "white",
-    color: "#355872"
+    color: "#355872",
+    textAlign: "center",
+    fontSize: "2rem",
+    fontWeight: "700"
   },
 
   chatbox: {
@@ -177,45 +148,47 @@ const styles: Record<string, CSSProperties> = {
   user: {
     alignSelf: "flex-end",
     background: "#7aaace",
-    padding: "12px",
-    borderRadius: "18px",
     color: "white",
+    padding: "14px 18px",
+    borderRadius: "18px",
     maxWidth: "80%"
   },
 
   bot: {
     alignSelf: "flex-start",
     background: "white",
-    padding: "12px",
-    borderRadius: "18px",
     color: "#355872",
-    maxWidth: "80%"
+    padding: "14px 18px",
+    borderRadius: "18px",
+    maxWidth: "80%",
+    border: "1px solid #9cd5ff"
   },
 
   inputArea: {
     display: "flex",
-    gap: "10px",
+    gap: "12px",
     padding: "20px",
     background: "white"
   },
 
   input: {
     flex: 1,
-    padding: "12px",
+    padding: "14px",
     borderRadius: "12px",
     border: "1px solid #7aaace",
-    color: "#355872"
+    color: "#355872",
+    fontSize: "1rem"
   },
 
   button: {
     background: "#355872",
     color: "white",
     border: "none",
-    padding: "12px",
+    padding: "14px 24px",
     borderRadius: "12px",
+    fontWeight: "700",
     cursor: "pointer"
   }
-
 };
 
 export default AI;
