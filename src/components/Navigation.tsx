@@ -30,26 +30,53 @@ function Navigation() {
           gap: "40px"
         }}
       >
-        {["Home", "Timer", "To-Do", "AI"].map((item) => (
-          <Link
-            key={item}
-            to={
-              item === "Home"
-                ? "/"
-                : item === "To-Do"
-                ? "/todo"
-                : /${item.toLowerCase()}
-            }
-            style={{
-              color: "#355872",
-              textDecoration: "none",
-              fontWeight: 700,
-              fontSize: "20px"
-            }}
-          >
-            {item}
-          </Link>
-        ))}
+        <Link
+          to="/"
+          style={{
+            color: "#355872",
+            textDecoration: "none",
+            fontWeight: 700,
+            fontSize: "20px"
+          }}
+        >
+          Home
+        </Link>
+
+        <Link
+          to="/timer"
+          style={{
+            color: "#355872",
+            textDecoration: "none",
+            fontWeight: 700,
+            fontSize: "20px"
+          }}
+        >
+          Timer
+        </Link>
+
+        <Link
+          to="/todo"
+          style={{
+            color: "#355872",
+            textDecoration: "none",
+            fontWeight: 700,
+            fontSize: "20px"
+          }}
+        >
+          To-Do
+        </Link>
+
+        <Link
+          to="/ai"
+          style={{
+            color: "#355872",
+            textDecoration: "none",
+            fontWeight: 700,
+            fontSize: "20px"
+          }}
+        >
+          AI
+        </Link>
       </div>
     </nav>
   );
