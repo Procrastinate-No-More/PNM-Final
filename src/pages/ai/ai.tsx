@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
+import ReactMarkdown from "react-markdown";
 
 type ChatMessage = {
   sender: "user" | "bot";
@@ -70,6 +71,7 @@ function AI() {
       <div style={styles.chatCard}>
         <div style={styles.header}>
           <h2 style={styles.heading}>PNM.ai</h2>
+
           <p style={styles.subheading}>
             Your productivity assistant
           </p>
@@ -85,7 +87,9 @@ function AI() {
                   : styles.botMessage
               }
             >
-              {msg.text}
+              <ReactMarkdown>
+                {msg.text}
+              </ReactMarkdown>
             </div>
           ))}
         </div>
@@ -117,18 +121,19 @@ function AI() {
 
 const styles: Record<string, CSSProperties> = {
   page: {
-    minHeight: "calc(100vh - 70px)",
+    height: "calc(100vh - 70px)",
     background: "#efeee5",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "25px"
+    padding: "15px",
+    overflow: "hidden"
   },
 
   chatCard: {
     width: "100%",
     maxWidth: "900px",
-    height: "650px",
+    height: "600px",
     background: "#f9f9f7",
     borderRadius: "25px",
     border: "1px solid #d1e3ee",
@@ -173,7 +178,8 @@ const styles: Record<string, CSSProperties> = {
     color: "white",
     padding: "12px 16px",
     borderRadius: "16px",
-    maxWidth: "70%"
+    maxWidth: "70%",
+    textAlign: "left"
   },
 
   botMessage: {
@@ -183,7 +189,8 @@ const styles: Record<string, CSSProperties> = {
     padding: "12px 16px",
     borderRadius: "16px",
     border: "1px solid #d1e3ee",
-    maxWidth: "70%"
+    maxWidth: "70%",
+    textAlign: "left"
   },
 
   inputContainer: {
